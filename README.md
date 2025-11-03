@@ -21,7 +21,6 @@ Our platform connects farmers directly with buyers and other farmers, allowing t
 
 * **Farmer-Only Vendors:** Strictly all vendors are farmers, as the platform is dedicated to them.
 * **Easy to Use:** Designed to be as familiar as social media accounts.
-* **Demo Videos:** Includes demo videos for registration, adding products, payment, etc.
 * **Secure Payments:** Integrated with a safe payment gateway (Razorpay).
 * **Logistics Support:** Includes a good logistic delivery partner to help farmers do business from home.
 
