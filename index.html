@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCraft - Digital Marketplace for Farmers & Buyers</title>
+    <meta name="description" content="Connect directly with farmers or buyers. Fair prices. No middlemen. Sustainable agriculture marketplace.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@600;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #81c784;
+            --accent-gold: #ffab00;
+            --dark-text: #263238;
+            --light-text: #f5f5f5;
+            --section-bg: rgba(255, 255, 255, 0.9);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--dark-text);
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        /* Overlay and Main Content */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(46, 125, 50, 0.85);
+            z-index: 0;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header Section */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Infant', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--accent-gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Infant', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 3rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        /* Role Selection */
+        .role-selection {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .role-question {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+        }
+        
+        .divider {
+            width: 80%;
+            max-width: 400px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 2rem auto;
+            animation: expandWidth 1.5s ease-out;
+        }
+        
+        .role-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .role-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            min-width: 180px;
+        }
+        
+        .btn-farmer {
+            background-color: var(--light-green);
+            color: var(--dark-text);
+            border: 2px solid var(--light-green);
+        }
+        
+        .btn-buyer {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .role-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-farmer:hover {
+            background-color: #66bb6a;
+        }
+        
+        .btn-buyer:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--section-bg);
+            padding: 4rem 0;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-family: 'Cormorant Infant', serif;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+        
+        /* Info Cards Section */
+        .info-cards {
+            padding: 4rem 0;
+        }
+        
+        .info-cards h2 {
+            text-align: center;
+            font-family: 'Cormorant Infant', serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .info-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .info-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-card h3 i {
+            margin-right: 0.8rem;
+            font-size: 1.8rem;
+        }
+        
+        .info-card p {
+            margin-bottom: 1rem;
+        }
+        
+        .info-card a {
+            color: var(--primary-green);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .info-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .info-card a i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .info-card a:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light-green);
+        }
+        
+        .social-icons {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes expandWidth {
+            from { width: 0; opacity: 0; }
+            to { width: 80%; opacity: 1; }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .role-question {
+                font-size: 1.5rem;
+            }
+            
+            .role-btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .features h2, .info-cards h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .role-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .feature-grid, .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <div class="container">
+        <header>
+            <a href="#" class="logo">
+                <i class="fas fa-leaf"></i> AgroCraft
+            </a>
+            <nav>
+                <a href="#about" style="color: white; text-decoration: none;">About</a>
+                <a href="#contact" style="color: white; text-decoration: none; margin-left: 1.5rem;">Contact</a>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="hero">
+                <h1 class="animate__animated animate__fadeInDown">Welcome to AgroCraft</h1>
+                <p class="animate__animated animate__fadeIn">Connecting farmers directly with buyers for fair trade and sustainable agriculture</p>
+                
+                <div class="role-selection">
+                    <div class="role-question animate__animated animate__fadeIn">Are you a:</div>
+                    <div class="divider"></div>
+                    <div class="role-buttons">
+                        <a href="auth/FarmerLogin.php" class="role-btn btn-farmer animate__animated animate__fadeInUp">
+                            <i class="fas fa-tractor"></i> Farmer
+                        </a>
+                        <a href="auth/BuyerLogin.php" class="role-btn btn-buyer animate__animated animate__fadeInUp">
+                            <i class="fas fa-shopping-basket"></i> Buyer
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="features">
+                <h2>Why Choose AgroCraft?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Direct Trade</h3>
+                        <p>Eliminate middlemen and get fair prices for your products with our farmer-to-buyer platform.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Reliable Logistics</h3>
+                        <p>Our partnered delivery network ensures safe and timely transportation of goods.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Secure Payments</h3>
+                        <p>Escrow payment system protects both farmers and buyers throughout the transaction.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="info-cards" id="about">
+                <h2>Learn More About AgroCraft</h2>
+                <div class="info-grid">
+                    <div class="info-card" id="about-card">
+                        <h3><i class="fas fa-info-circle"></i> About Us</h3>
+                        <p>AgroCraft is a digital marketplace revolutionizing agricultural commerce by connecting farmers directly with buyers. Founded in 2023, we've already helped over 10,000 farmers increase their profits by 30% on average.</p>
+                        <p>Our mission is to create sustainable farming communities through technology.</p>
+                        <a href="#">Read more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="info-card" id="contact-card">
+                        <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+                        <p><strong>Email:</strong> support@agrocraft.com</p>
+                        <p><strong>Phone:</strong> +91 98765 43210</p>
+                        <p><strong>Address:</strong> 123 Farm Street, Agri Zone, Bangalore, India</p>
+                        <p>Our support team is available 24/7 to assist you with any questions.</p>
+                        <a href="#">Contact form <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="info-card" id="terms-card">
+                        <h3><i class="fas fa-file-contract"></i> Terms of Service</h3>
+                        <p>By using AgroCraft, you agree to our terms and conditions that ensure fair and transparent transactions for all parties.</p>
+                        <p>Key points include our 5% transaction fee, quality standards for products, and dispute resolution process.</p>
+                        <a href="#">Full terms <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="info-card" id="privacy-card">
+                        <h3><i class="fas fa-shield-alt"></i> Privacy Policy</h3>
+                        <p>We take your privacy seriously. AgroCraft collects only necessary data to facilitate transactions and improve our services.</p>
+                        <p>Your payment information is processed through secure third-party providers and never stored on our servers.</p>
+                        <a href="#">Privacy details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#about-card">About Us</a>
+            <a href="#contact-card">Contact</a>
+            <a href="#terms-card">Terms of Service</a>
+            <a href="#privacy-card">Privacy Policy</a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://facebook.com/agrocraft" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/agrocraft" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/agrocraft" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+        <p>&copy; 2023 AgroCraft. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Animation for info cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            
+            featureCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Animate info cards when they come into view
+            const infoCards = document.querySelectorAll('.info-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            infoCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.15}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
